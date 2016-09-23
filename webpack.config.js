@@ -1,28 +1,31 @@
+var debug = process.env.NODE_ENV !== "production";
+var webpack = require('webpack');
+var path = require('path');
+
 module.exports = {
-  entry: [
-    'babel-polyfill',
-    './src/index.jsx'
-  ],
-  output: {
-    path: __dirname,
-    publicPath: '/',
-    filename: './dist/bundle.js'
-  },
+  context: path.join(__dirname, "src"),
+  devtool: debug ? "inline-sourcemap" : null,
+  entry: "./js/client.js",
   module: {
-    loaders: [{
-      exclude: /node_modules/,
-      loader: 'babel-loader',
-      query: {
-        plugins: ['transform-runtime'],
-        presets: ['es2015', 'stage-0', 'react'],
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['react', 'es2015', 'stage-0'],
+          plugins: ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy'],
+        }
       }
-    }]
+    ]
   },
-  resolve: {
-    extensions: ['', '.js', '.jsx'],
+  output: {
+    path: __dirname + "/src/",
+    filename: "client.min.js"
   },
-  devServer: {
-    historyApiFallback: true,
-    contentBase: './'
-  }
+  plugins: debug ? [] : [
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
+  ],
 };
