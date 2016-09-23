@@ -1,21 +1,34 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-class BenefitsMenu extends Component {
+import { addChicken } from '../actions/benefitsActions';
+
+@connect((store) => {
+  return {
+    money: store.money,
+    benefits: store.benefits
+  };
+})
+
+export default class BenefitsMenu extends Component {
   constructor(props) {
     super(props);
-    this.props = props;
   }
 
   render() {
+    const { benefits, money } = this.props;
 
     const style = {
       benefits: {
         width: '100%',
+        padding: 0,
+        margin: 0,
         item: {
           boxSizing: 'border-box',
-          padding: 15,
+          padding: '15px 50px',
           color: 'white',
-          listStyleType: 'none'
+          listStyleType: 'none',
+          borderBottom: '1px dashed orange'
         }
       },
     }
@@ -23,12 +36,10 @@ class BenefitsMenu extends Component {
     return(
       <ul style={ style.benefits }>
         <li style={ style.benefits.item }>
-          <h2>Nome de benefício </h2>
-
+          <h2>Chicken </h2>
+          <div>{benefits.chicken.price}</div>
         </li>
       </ul>
     );
   }
 }
-
-export default BenefitsMenu;

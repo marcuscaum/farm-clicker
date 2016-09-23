@@ -1,5 +1,9 @@
 import { combineReducers } from 'redux'
 
 import money from './moneyReducer';
+import benefits from './benefitsReducer';
 
-export default money;
+export default combineReducers({
+  money,
+  benefits,
+})

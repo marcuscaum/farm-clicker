@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import BenefitsMenu from './benefits_menu';
 import { addMoneyPerSecond, addMoneyTotal } from '../actions/moneyActions';
 
 @connect((store) => {
   return {
-    money_total: store.money_total,
-    money_per_second: store.money_per_second
+    money_total: store.money.money_total,
+    money_per_second: store.money.money_per_second
   };
 })
 
@@ -42,12 +43,11 @@ export default class App extends Component {
 
     const style = {
       farm: {
-        width: 430,
         money_board: {
           display: 'flex',
           flexDirection: 'column',
           height: '100%',
-          width: '100%',
+          width: 430,
           total: {
             fontSize: '4em',
             backgroundColor: 'orange',
@@ -78,6 +78,7 @@ export default class App extends Component {
         <h2 style={style.farm.money_board.per_second}>MONEY PER SECOND <strong>{money_per_second}/s</strong></h2>
         <button style={style.farm.money_board.work_button} onClick={ this.incrementMoneyTotal.bind(this, 1) }> WORK!</button>
       </div>
+      <BenefitsMenu />
     </div>
 
   }
