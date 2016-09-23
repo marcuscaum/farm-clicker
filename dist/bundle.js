@@ -31016,36 +31016,71 @@
 	var Farm = function (_Component) {
 	  (0, _inherits3.default)(Farm, _Component);
 
-	  function Farm(props) {
+	  function Farm() {
 	    (0, _classCallCheck3.default)(this, Farm);
 
-	    var _this = (0, _possibleConstructorReturn3.default)(this, (Farm.__proto__ || (0, _getPrototypeOf2.default)(Farm)).call(this, props));
+	    var _this = (0, _possibleConstructorReturn3.default)(this, (Farm.__proto__ || (0, _getPrototypeOf2.default)(Farm)).call(this));
 
-	    _this.props = props;
+	    _this.incrementMoneyTotal = function (quantity) {
+	      _this.setState({
+	        farm: {
+	          money_total: _this.state.farm.money_total + quantity,
+	          money_per_second: _this.state.farm.money_per_second,
+	          benefits: {
+	            chickens: _this.state.farm.benefits.chickens,
+	            pigs: _this.state.farm.benefits.pigs,
+	            cows: _this.state.farm.benefits.cows,
+	            corn_fields: _this.state.farm.benefits.corn_fields
+	          }
+	        }
+	      });
+	    };
+
 	    _this.state = {
 	      farm: {
 	        money_total: 0,
-	        money_per_second: 0,
+	        money_per_second: 5,
 	        benefits: {
 	          chickens: 0,
 	          pigs: 0,
 	          cows: 0,
-	          corn_field: 0
+	          corn_fields: 0
 	        }
 	      }
 	    };
+
+	    _this.incrementMoneyPerSecond();
 	    return _this;
 	  }
 
 	  (0, _createClass3.default)(Farm, [{
+	    key: 'incrementMoneyPerSecond',
+	    value: function incrementMoneyPerSecond() {
+	      var _this2 = this;
+
+	      if (this.state.farm.money_per_second > 0) {
+	        setTimeout(function () {
+	          _this2.incrementMoneyTotal(_this2.state.farm.money_per_second);
+	          _this2.incrementMoneyPerSecond();
+	        }, 1000);
+	      }
+	    }
+	  }, {
+	    key: 'addChicken',
+	    value: function addChicken() {}
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this3 = this;
 
 	      var style = {
 	        farm: {
 	          width: 430,
 	          height: '100%',
-	          money: {
+	          money_board: {
+	            display: 'flex',
+	            flexDirection: 'column',
+	            height: '100%',
 	            total: {
 	              fontSize: '4em',
 	              backgroundColor: 'orange',
@@ -31059,7 +31094,12 @@
 	              margin: 0,
 	              padding: '20px 0',
 	              backgroundColor: '#00ff53',
-	              textAlign: 'center'
+	              textAlign: 'center',
+	              fontWeight: 100,
+	              fontSize: 15
+	            },
+	            work_button: {
+	              height: '100%'
 	            }
 	          }
 	        }
@@ -31070,16 +31110,30 @@
 	        { style: style.farm },
 	        _react2.default.createElement(
 	          'div',
-	          { style: style.farm.board },
+	          { style: style.farm.money_board },
 	          _react2.default.createElement(
 	            'h1',
-	            { style: style.farm.money.total },
-	            ' $12'
+	            { style: style.farm.money_board.total },
+	            ' $',
+	            this.state.farm.money_total
 	          ),
 	          _react2.default.createElement(
 	            'h2',
-	            { style: style.farm.money.per_second },
-	            'MONEY PER SECOND 2/s'
+	            { style: style.farm.money_board.per_second },
+	            'MONEY PER SECOND ',
+	            _react2.default.createElement(
+	              'strong',
+	              null,
+	              this.state.farm.money_per_second,
+	              '/s'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            { style: style.farm.money_board.work_button, onClick: function onClick() {
+	                return _this3.incrementMoneyTotal(1);
+	              } },
+	            ' WORK!'
 	          )
 	        )
 	      );
