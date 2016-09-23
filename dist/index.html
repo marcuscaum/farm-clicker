@@ -2,14 +2,40 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Amatica+SC|Open+Sans" rel="stylesheet">
     <script src="/horizon/horizon.js"></script>
     <script>
       var horizon = Horizon();
-      horizon.onReady(function() {
-        document.querySelector('h1').innerHTML = 'farm_clicker works!'
-      });
       horizon.connect();
     </script>
+    <style>
+      body, html {
+        margin: 0;
+        height: 100%;
+        font-family: 'Open Sans', sans-serif;
+      }
+
+      h1, h2, h3, h4 {
+        font-family: 'Amatica SC', cursive;
+      }
+
+      body {
+        background-image: url('../assets/img/farm.gif');
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      .attach {
+        height: 100%;
+        background-color: rgba(0,0,0, 0.9);
+      }
+
+      .attach > div {
+        height: 100%;
+        display: flex;
+        justify-content: flex-start;
+      }
+    </style>
   </head>
   <body>
     <div class="attach"></div>

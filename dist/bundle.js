@@ -29413,6 +29413,14 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _farm = __webpack_require__(556);
+
+	var _farm2 = _interopRequireDefault(_farm);
+
+	var _benefits_menu = __webpack_require__(557);
+
+	var _benefits_menu2 = _interopRequireDefault(_benefits_menu);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var App = function (_Component) {
@@ -29429,7 +29437,8 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        'Hello xunda!'
+	        _react2.default.createElement(_farm2.default, null),
+	        _react2.default.createElement(_benefits_menu2.default, null)
 	      );
 	    }
 	  }]);
@@ -30967,6 +30976,203 @@
 	var $export = __webpack_require__(482)
 	// 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 	$export($export.S, 'Object', {create: __webpack_require__(513)});
+
+/***/ },
+/* 556 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _getPrototypeOf = __webpack_require__(470);
+
+	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+	var _classCallCheck2 = __webpack_require__(496);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _createClass2 = __webpack_require__(497);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
+
+	var _possibleConstructorReturn2 = __webpack_require__(501);
+
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+	var _inherits2 = __webpack_require__(548);
+
+	var _inherits3 = _interopRequireDefault(_inherits2);
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Farm = function (_Component) {
+	  (0, _inherits3.default)(Farm, _Component);
+
+	  function Farm(props) {
+	    (0, _classCallCheck3.default)(this, Farm);
+
+	    var _this = (0, _possibleConstructorReturn3.default)(this, (Farm.__proto__ || (0, _getPrototypeOf2.default)(Farm)).call(this, props));
+
+	    _this.props = props;
+	    _this.state = {
+	      farm: {
+	        money_total: 0,
+	        money_per_second: 0,
+	        benefits: {
+	          chickens: 0,
+	          pigs: 0,
+	          cows: 0,
+	          corn_field: 0
+	        }
+	      }
+	    };
+	    return _this;
+	  }
+
+	  (0, _createClass3.default)(Farm, [{
+	    key: 'render',
+	    value: function render() {
+
+	      var style = {
+	        farm: {
+	          width: 430,
+	          height: '100%',
+	          money: {
+	            total: {
+	              fontSize: '4em',
+	              backgroundColor: 'orange',
+	              fontWeight: 'inherit',
+	              textAlign: 'center',
+	              padding: '45px 0',
+	              margin: 0,
+	              borderBottom: '10px dashed #00ff53'
+	            },
+	            per_second: {
+	              margin: 0,
+	              padding: '20px 0',
+	              backgroundColor: '#00ff53',
+	              textAlign: 'center'
+	            }
+	          }
+	        }
+	      };
+
+	      return _react2.default.createElement(
+	        'div',
+	        { style: style.farm },
+	        _react2.default.createElement(
+	          'div',
+	          { style: style.farm.board },
+	          _react2.default.createElement(
+	            'h1',
+	            { style: style.farm.money.total },
+	            ' $12'
+	          ),
+	          _react2.default.createElement(
+	            'h2',
+	            { style: style.farm.money.per_second },
+	            'MONEY PER SECOND 2/s'
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	  return Farm;
+	}(_react.Component);
+
+	exports.default = Farm;
+
+/***/ },
+/* 557 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _getPrototypeOf = __webpack_require__(470);
+
+	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+	var _classCallCheck2 = __webpack_require__(496);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _createClass2 = __webpack_require__(497);
+
+	var _createClass3 = _interopRequireDefault(_createClass2);
+
+	var _possibleConstructorReturn2 = __webpack_require__(501);
+
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+	var _inherits2 = __webpack_require__(548);
+
+	var _inherits3 = _interopRequireDefault(_inherits2);
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var BenefitsMenu = function (_Component) {
+	  (0, _inherits3.default)(BenefitsMenu, _Component);
+
+	  function BenefitsMenu(props) {
+	    (0, _classCallCheck3.default)(this, BenefitsMenu);
+
+	    var _this = (0, _possibleConstructorReturn3.default)(this, (BenefitsMenu.__proto__ || (0, _getPrototypeOf2.default)(BenefitsMenu)).call(this, props));
+
+	    _this.props = props;
+	    return _this;
+	  }
+
+	  (0, _createClass3.default)(BenefitsMenu, [{
+	    key: 'render',
+	    value: function render() {
+
+	      var style = {
+	        benefits: {
+	          width: '100%',
+	          item: {
+	            boxSizing: 'border-box',
+	            padding: 15,
+	            color: 'white',
+	            listStyleType: 'none'
+	          }
+	        }
+	      };
+
+	      return _react2.default.createElement(
+	        'ul',
+	        { style: style.benefits },
+	        _react2.default.createElement(
+	          'li',
+	          { style: style.benefits.item },
+	          _react2.default.createElement(
+	            'h2',
+	            null,
+	            'Nome de benefício '
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	  return BenefitsMenu;
+	}(_react.Component);
+
+	exports.default = BenefitsMenu;
 
 /***/ }
 /******/ ]);
