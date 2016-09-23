@@ -12,6 +12,11 @@ import { addMoneyPerSecond, addMoneyTotal } from '../actions/moneyActions';
 
 export default class App extends Component {
 
+  constructor(props) {
+    super(props);
+    this.moneyPerSecondWorker();
+  }
+
   incrementMoneyTotal(quantity) {
     this.props.dispatch(addMoneyTotal(quantity));
   }
@@ -19,6 +24,18 @@ export default class App extends Component {
   incrementeMoneyPerSecond(quantity) {
     this.props.dispatch(addMoneyPerSecond(quantity))
   }
+
+  moneyPerSecondWorker() {
+    const { money_total, money_per_second } = this.props;
+
+    if (this.props.money_per_second > 0) {
+      setTimeout(() => {
+        this.incrementMoneyTotal(money_per_second)
+        this.moneyPerSecondWorker();
+      }, 1000);
+    }
+  }
+
 
   render() {
     const { money_per_second, money_total } = this.props;
