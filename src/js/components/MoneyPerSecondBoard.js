@@ -33,7 +33,7 @@ export default class MoneyPerSecondBoard extends Component {
       per_second: {
         margin:0,
         padding: '20px 0',
-        backgroundColor: 'rgba(228, 5, 5, 0.45)',
+        backgroundColor: 'rgba(255, 255, 255, 0.5)',
         color: 'white',
         textAlign: 'center',
         fontWeight: 100,

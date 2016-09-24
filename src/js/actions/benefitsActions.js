@@ -11,3 +11,10 @@ export function addPig(quantity) {
     payload: quantity
   }
 }
+
+export function addCow(quantity) {
+  return {
+    type: "ADD_COW",
+    payload: quantity
+  }
+}

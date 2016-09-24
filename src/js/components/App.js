@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import Barn from './Barn';
 import BenefitsMenu from './BenefitsMenu';
 import MoneyPerSecondBoard from './MoneyPerSecondBoard';
 import { addMoneyPerSecond, addMoneyTotal } from '../actions/moneyActions';
@@ -32,10 +33,6 @@ export default class App extends Component {
     const style = {
       farm: {
         money_board: {
-          display: 'flex',
-          flexDirection: 'column',
-          height: '100%',
-          width: 430,
           total: {
             fontSize: '4em',
             fontFamily: 'serif',
@@ -43,7 +40,7 @@ export default class App extends Component {
             textAlign: 'center',
             padding: '45px 0',
             margin: 0,
-            borderBottom: '10px dashed rgba(228, 5, 5, 0.45)'
+            borderBottom: '10px dashed rgba(255, 255, 255, 0.5)'
           },
           per_second: {
             margin:0,
@@ -52,21 +49,23 @@ export default class App extends Component {
             textAlign: 'center',
             fontWeight: 100,
             fontSize: 15
-          },
-          work_button: {
-            height: '100%'
           }
         }
       }
     }
 
     return <div style={style.farm}>
-      <div style={style.farm.money_board}>
-        <h1 style={style.farm.money_board.total}> $ <span>{money_total}</span></h1>
-        <MoneyPerSecondBoard />
-        <button style={style.farm.money_board.work_button} onClick={ this.incrementMoneyTotal.bind(this, 1) }> WORK!</button>
+      <div className="money">
+        <div className="money-board">
+          <h1 style={style.farm.money_board.total}> $ <span>{money_total}</span></h1>
+          <MoneyPerSecondBoard />
+          <button style={style.farm.money_board.work_button} onClick={ this.incrementMoneyTotal.bind(this, 1) }> WORK!</button>
+        </div>
       </div>
-      <BenefitsMenu />
+      <div className="board">
+        <BenefitsMenu />
+        <Barn/>
+      </div>
     </div>
 
   }

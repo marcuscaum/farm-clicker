@@ -6,6 +6,10 @@ export default function reducer(state={
     pig: {
       quantity: 0,
       price: 100
+    },
+    cow: {
+      quantity: 0,
+      price: 500
     }
   }, action) {
 
@@ -24,6 +28,15 @@ export default function reducer(state={
           ...state,
           pig: {
             quantity: state.pig.quantity + action.payload,
+            price: state.pig.price * 2
+          }
+        }
+      }
+      case "ADD_COW": {
+        return {
+          ...state,
+          pig: {
+            quantity: state.cow.quantity + action.payload,
             price: state.pig.price * 2
           }
         }
