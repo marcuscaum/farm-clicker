@@ -1,5 +1,5 @@
 export default function reducer(state={
-    money_per_second: 10,
+    money_per_second: 0,
     money_total: 0
   }, action) {
 
@@ -9,6 +9,9 @@ export default function reducer(state={
       }
       case "INC_MONEY_TOTAL": {
         return {...state, money_total: state.money_total + action.payload}
+      }
+      case "DEC_MONEY_TOTAL": {
+        return {...state, money_total: state.money_total - action.payload}
       }
     }
 

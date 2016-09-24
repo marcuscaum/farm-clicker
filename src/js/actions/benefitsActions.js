@@ -1,9 +1,6 @@
-export function addChicken(quantity, price) {
+export function addChicken(quantity) {
   return {
     type: "ADD_CHICKEN",
-    payload: {
-      quantity,
-      price
-    }
+    payload: quantity
   }
 }

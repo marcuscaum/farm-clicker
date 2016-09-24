@@ -10,7 +10,7 @@ export default function reducer(state={
         return {
           ...state,
           chicken: {
-            quantity: state.chicken.quantity + action.payload.quantiy,
+            quantity: state.chicken.quantity + action.payload,
             price: state.chicken.price * 2
           }
         }

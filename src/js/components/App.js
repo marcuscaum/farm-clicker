@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import BenefitsMenu from './benefits_menu';
+import BenefitsMenu from './BenefitsMenu';
+import MoneyPerSecondBoard from './MoneyPerSecondBoard';
 import { addMoneyPerSecond, addMoneyTotal } from '../actions/moneyActions';
 
 @connect((store) => {
@@ -15,7 +16,6 @@ export default class App extends Component {
 
   constructor(props) {
     super(props);
-    this.moneyPerSecondWorker();
   }
 
   incrementMoneyTotal(quantity) {
@@ -25,18 +25,6 @@ export default class App extends Component {
   incrementeMoneyPerSecond(quantity) {
     this.props.dispatch(addMoneyPerSecond(quantity))
   }
-
-  moneyPerSecondWorker() {
-    const { money_total, money_per_second } = this.props;
-
-    if (this.props.money_per_second > 0) {
-      setTimeout(() => {
-        this.incrementMoneyTotal(money_per_second)
-        this.moneyPerSecondWorker();
-      }, 1000);
-    }
-  }
-
 
   render() {
     const { money_per_second, money_total } = this.props;
@@ -75,7 +63,7 @@ export default class App extends Component {
     return <div style={style.farm}>
       <div style={style.farm.money_board}>
         <h1 style={style.farm.money_board.total}> ${money_total}</h1>
-        <h2 style={style.farm.money_board.per_second}>MONEY PER SECOND <strong>{money_per_second}/s</strong></h2>
+        <MoneyPerSecondBoard />
         <button style={style.farm.money_board.work_button} onClick={ this.incrementMoneyTotal.bind(this, 1) }> WORK!</button>
       </div>
       <BenefitsMenu />
