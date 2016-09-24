@@ -4,3 +4,10 @@ export function addChicken(quantity) {
     payload: quantity
   }
 }
+
+export function addPig(quantity) {
+  return {
+    type: "ADD_PIG",
+    payload: quantity
+  }
+}
