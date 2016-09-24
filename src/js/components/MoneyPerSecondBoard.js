@@ -11,20 +11,20 @@ import { addMoneyTotal } from '../actions/moneyActions';
 
 export default class MoneyPerSecondBoard extends Component {
 
-  moneyPerSecondWorker() {
-    const { money_per_second } = this.props;
+  constructor(props, worker) {
+    super(props);
 
-    if (money_per_second > 0) {
-      setTimeout(() => {
-        this.props.dispatch(addMoneyTotal(money_per_second));
-        this.moneyPerSecondWorker();
-      }, 1000);
-    }
+    this.incrementMoneyPerSecondWorker();
   }
 
-  componentDidUpdate() {
-    this.moneyPerSecondWorker();
+  incrementMoneyPerSecondWorker() {
+    setInterval(() => {
+      if (this.props.money_per_second > 0) {
+        this.props.dispatch(addMoneyTotal(this.props.money_per_second));
+      }
+    }, 1000)
   }
+
 
   render() {
     const { money_per_second } = this.props;
@@ -33,10 +33,11 @@ export default class MoneyPerSecondBoard extends Component {
       per_second: {
         margin:0,
         padding: '20px 0',
-        backgroundColor: '#00ff53',
+        backgroundColor: 'rgba(228, 5, 5, 0.45)',
+        color: 'white',
         textAlign: 'center',
         fontWeight: 100,
-        fontSize: 15
+        fontSize: 25
       }
     }
 

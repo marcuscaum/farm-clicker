@@ -38,12 +38,12 @@ export default class App extends Component {
           width: 430,
           total: {
             fontSize: '4em',
-            backgroundColor: 'orange',
-            fontWeight: 'inherit',
+            fontFamily: 'serif',
+            color: 'orange',
             textAlign: 'center',
             padding: '45px 0',
             margin: 0,
-            borderBottom: '10px dashed #00ff53'
+            borderBottom: '10px dashed rgba(228, 5, 5, 0.45)'
           },
           per_second: {
             margin:0,
@@ -62,7 +62,7 @@ export default class App extends Component {
 
     return <div style={style.farm}>
       <div style={style.farm.money_board}>
-        <h1 style={style.farm.money_board.total}> ${money_total}</h1>
+        <h1 style={style.farm.money_board.total}> $ <span>{money_total}</span></h1>
         <MoneyPerSecondBoard />
         <button style={style.farm.money_board.work_button} onClick={ this.incrementMoneyTotal.bind(this, 1) }> WORK!</button>
       </div>

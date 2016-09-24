@@ -39,7 +39,6 @@ export default class BenefitsMenu extends Component {
           padding: '15px 50px',
           color: 'white',
           listStyleType: 'none',
-          borderBottom: '1px dashed orange',
           display: 'flex',
           justifyContent: 'space-between',
           chicken: {
@@ -64,7 +63,7 @@ export default class BenefitsMenu extends Component {
     let chickens = [];
 
     for (var i = 0; i < benefits.chicken.quantity; i++) {
-      chickens.push(<div style={style.benefits.item.chicken}> </div>)
+      chickens.push(<div key={i} style={style.benefits.item.chicken}> </div>)
     }
 
     return(

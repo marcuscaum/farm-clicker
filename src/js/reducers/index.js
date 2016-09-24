@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
 
 import money from './moneyReducer';
 import benefits from './benefitsReducer';
